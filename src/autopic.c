@@ -25,6 +25,7 @@ int AreArgsValid(int argcount,char** arg_buffer)
 	while (arg_counter < REQARGC)
 	{
 		/*printf("%s\n",arg_buffer[arg_counter]);*/
+		if (IsDirExists(arg_buffer[arg_counter]) != 0) return 2;
 		arg_counter++;
 	}
 	return 0;
