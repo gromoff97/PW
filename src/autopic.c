@@ -46,5 +46,14 @@ int IsDirExists(char* dir_path)
 
 int IsDirEmpty(char* dir_path)
 {
+	size_t file_counter = 0;
+	DIR* dir = opendir(dir_path);
+    if (dir)
+    {
+        while (readdir(dir) != NULL)
+        	file_counter++;
+        closedir(dir);
+    }
+    if (file_counter != 2) return 1;
 	return 0;
 }
