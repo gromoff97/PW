@@ -33,5 +33,11 @@ int AreArgsValid(int argcount,char** arg_buffer)
 
 int IsDirExists(char* dir_path)
 {
-	return 0;
+	DIR* dir = opendir(dir_path);
+	if (dir)
+	{
+		closedir(dir);
+		return 0;
+	}
+	return 1;
 }
