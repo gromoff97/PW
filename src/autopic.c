@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <stdbool.h>
 
 #define REQARGC 3
 
 int AreArgsValid(int,char**);
-	int IsDirExists(char*);
-	int IsDirEmpty(char*);
+	bool IsDirExists(char*);
+	bool IsDirEmpty(char*);
 
 int main(int argc, char** argv)
 {
@@ -25,25 +26,25 @@ int AreArgsValid(int argcount,char** arg_buffer)
 	}
 	while (arg_counter < REQARGC)
 	{
-		if (IsDirExists(arg_buffer[arg_counter]) != 0) return 2;
-		if (IsDirEmpty(arg_buffer[arg_counter]) != 0) return 3;
+		if (!IsDirExists(arg_buffer[arg_counter])) return 2;
+		if (!IsDirEmpty(arg_buffer[arg_counter])) return 3;
 		arg_counter++;
 	}
 	return 0;
 }
 
-int IsDirExists(char* dir_path)
+bool IsDirExists(char* dir_path)
 {
 	DIR* dir = opendir(dir_path);
 	if (dir)
 	{
 		closedir(dir);
-		return 0;
+		return true;
 	}
-	return 1;
+	return false;
 }
 
-int IsDirEmpty(char* dir_path)
+bool IsDirEmpty(char* dir_path)
 {
 	size_t file_counter = 0;
 	DIR* dir = opendir(dir_path);
@@ -53,6 +54,6 @@ int IsDirEmpty(char* dir_path)
         	file_counter++;
         closedir(dir);
     }
-    if (file_counter != 2) return 1;
-	return 0;
+    if (file_counter != 2) return false;
+	return true;
 }
