@@ -27,6 +27,7 @@ int AreArgsValid(int argcount,char** arg_buffer)
 	{
 		/*printf("%s\n",arg_buffer[arg_counter]);*/
 		if (IsDirExists(arg_buffer[arg_counter]) != 0) return 2;
+		if (IsDirEmpty(arg_buffer[arg_counter]) != 0) return 3;
 		arg_counter++;
 	}
 	return 0;
