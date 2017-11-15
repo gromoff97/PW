@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <dirent.h>
 
 #define REQARGC 3
 
@@ -26,5 +27,10 @@ int AreArgsValid(int argcount,char** arg_buffer)
 		/*printf("%s\n",arg_buffer[arg_counter]);*/
 		arg_counter++;
 	}
+	return 0;
+}
+
+int IsDirExists(char* dir_path)
+{
 	return 0;
 }
