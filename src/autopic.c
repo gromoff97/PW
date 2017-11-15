@@ -6,6 +6,7 @@
 
 int AreArgsValid(int,char**);
 	int IsDirExists(char*);
+	int IsDirEmpty(char*);
 
 int main(int argc, char** argv)
 {
@@ -40,4 +41,9 @@ int IsDirExists(char* dir_path)
 		return 0;
 	}
 	return 1;
+}
+
+int IsDirEmpty(char* dir_path)
+{
+	return 0;
 }
