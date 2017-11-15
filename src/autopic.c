@@ -13,6 +13,7 @@ int main(int argc, char** argv)
 
 int AreArgsValid(int argcount,char** arg_buffer)
 {
+	size_t arg_counter = 1;
 	if (argcount != REQARGC)
 	{
 		if (argcount < REQARGC) printf("Bad. Not enough %d argument(-s) to make it work.\nClosing\n",(REQARGC-argcount));
