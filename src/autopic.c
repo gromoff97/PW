@@ -4,6 +4,7 @@
 #define REQARGC 3
 
 int AreArgsValid(int,char**);
+	int IsDirExists(char*);
 
 int main(int argc, char** argv)
 {
