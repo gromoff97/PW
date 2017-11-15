@@ -20,5 +20,10 @@ int AreArgsValid(int argcount,char** arg_buffer)
 		else printf("Bad. You should remove %d argument(-s) to make it work.\nClosing\n",(argcount-REQARGC));
 		return 1;
 	}
+	while (arg_counter < REQARGC)
+	{
+		/*printf("%s\n",arg_buffer[arg_counter]);*/
+		arg_counter++;
+	}
 	return 0;
 }
