@@ -3,15 +3,15 @@
 
 #define REQARGC 3
 
-int AreArgsValid(int);
+int AreArgsValid(int,char**);
 
-int main(int argc, char const *argv[])
+int main(int argc, char** argv)
 {
-	if (!AreArgsValid(argc)) return 1;
+	if (!AreArgsValid(argc,argv)) return 1;
 	return 0;
 }
 
-int AreArgsValid(int argcount)
+int AreArgsValid(int argcount,char** arg_buffer)
 {
 	if (argcount != REQARGC)
 	{
