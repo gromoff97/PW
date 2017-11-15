@@ -6,7 +6,6 @@ int CheckArgs(int);
 
 int main(int argc, char const *argv[])
 {
-	if (!CheckArgs(argc)) return 1;
 	return 0;
 }
 
