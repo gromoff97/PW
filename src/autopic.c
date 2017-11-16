@@ -33,8 +33,8 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 	}
 	while (arg_counter < REQARGC)
 	{
-		if (!IsDirExists(arg_buffer[arg_counter])) return CHECK_DIR_NOT_EXISTS;
-		if (!IsDirEmpty(arg_buffer[arg_counter])) return CHECK_DIR_NOT_EMPTY;
+		if (!IsDirExists(arg_buffer[arg_counter])) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
+		if (!IsDirEmpty(arg_buffer[arg_counter])) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 		arg_counter++;
 	}
 	return CHECK_OK;
