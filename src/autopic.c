@@ -15,6 +15,7 @@ typedef enum {
 CheckArgErrCode AreArgsValid(int,char**);
 	static bool IsDirExists(char*);
 	static bool IsDirEmpty(char*);
+	static bool AreDirNamesUniqe(char**);
 
 int main(int argc, char** argv)
 {
@@ -60,5 +61,10 @@ static bool IsDirEmpty(char* dir_path)
         closedir(dir);
     }
     if (file_counter != 2) return false;
+	return true;
+}
+
+static bool AreDirNamesUniqe(char** dir_buffer)
+{
 	return true;
 }
