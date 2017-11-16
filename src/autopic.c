@@ -6,8 +6,8 @@
 #define REQARGC 3
 
 int AreArgsValid(int,char**);
-	bool IsDirExists(char*);
-	bool IsDirEmpty(char*);
+	static bool IsDirExists(char*);
+	static bool IsDirEmpty(char*);
 
 int main(int argc, char** argv)
 {
@@ -33,7 +33,7 @@ int AreArgsValid(int argcount,char** arg_buffer)
 	return 0;
 }
 
-bool IsDirExists(char* dir_path)
+static bool IsDirExists(char* dir_path)
 {
 	DIR* dir = opendir(dir_path);
 	if (dir)
@@ -44,7 +44,7 @@ bool IsDirExists(char* dir_path)
 	return false;
 }
 
-bool IsDirEmpty(char* dir_path)
+static bool IsDirEmpty(char* dir_path)
 {
 	size_t file_counter = 0;
 	DIR* dir = opendir(dir_path);
