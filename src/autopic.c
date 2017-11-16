@@ -34,10 +34,10 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 	}
 	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
 	{
-		if (!IsDirExists(arg_buffer[arg_counter])) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
-		if (!IsDirEmpty(arg_buffer[arg_counter])) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
+		if (IsDirExists(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
+		if (IsDirEmpty(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 	}
-	if (!AreDirNamesUniqe(arg_buffer)){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQE;}
+	if (AreDirNamesUniqe(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQE;}
 	return CHECK_OK;
 }
 
