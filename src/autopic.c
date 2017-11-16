@@ -29,15 +29,15 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 	{
 		if (argcount < REQARGC) printf("Bad. Not enough %d argument(-s) to make it work.\nClosing\n",(REQARGC-argcount));
 		else printf("Bad. You should remove %d argument(-s) to make it work.\nClosing\n",(argcount-REQARGC));
-		return 1;
+		return CHECK_INVALID_ARG_COUNT;
 	}
 	while (arg_counter < REQARGC)
 	{
-		if (!IsDirExists(arg_buffer[arg_counter])) return 2;
-		if (!IsDirEmpty(arg_buffer[arg_counter])) return 3;
+		if (!IsDirExists(arg_buffer[arg_counter])) return CHECK_DIR_NOT_EXISTS;
+		if (!IsDirEmpty(arg_buffer[arg_counter])) return CHECK_DIR_NOT_EMPTY;
 		arg_counter++;
 	}
-	return 0;
+	return CHECK_OK;
 }
 
 static bool IsDirExists(char* dir_path)
