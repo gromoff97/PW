@@ -12,7 +12,7 @@ typedef enum {
 	CHECK_DIR_NOT_EMPTY
 } CheckArgErrCode;
 
-int AreArgsValid(int,char**);
+CheckArgErrCode AreArgsValid(int,char**);
 	static bool IsDirExists(char*);
 	static bool IsDirEmpty(char*);
 
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-int AreArgsValid(int argcount,char** arg_buffer)
+CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 {
 	size_t arg_counter = 1;
 	if (argcount != REQARGC)
