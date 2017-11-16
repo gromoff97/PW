@@ -24,18 +24,16 @@ int main(int argc, char** argv)
 
 CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 {
-	size_t arg_counter = 1;
 	if (argcount != REQARGC)
 	{
 		if (argcount < REQARGC) printf("Bad. Not enough %d argument(-s) to make it work.\nClosing\n",(REQARGC-argcount));
 		else printf("Bad. You should remove %d argument(-s) to make it work.\nClosing\n",(argcount-REQARGC));
 		return CHECK_INVALID_ARG_COUNT;
 	}
-	while (arg_counter < REQARGC)
+	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
 	{
 		if (!IsDirExists(arg_buffer[arg_counter])) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
 		if (!IsDirEmpty(arg_buffer[arg_counter])) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
-		arg_counter++;
 	}
 	return CHECK_OK;
 }
