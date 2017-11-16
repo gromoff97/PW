@@ -5,6 +5,13 @@
 
 #define REQARGC 3
 
+typedef enum {
+	CHECK_OK = 0,
+	CHECK_INVALID_ARG_COUNT,
+	CHECK_DIR_NOT_EXISTS,
+	CHECK_DIR_NOT_EMPTY
+} CheckArgErrCode;
+
 int AreArgsValid(int,char**);
 	static bool IsDirExists(char*);
 	static bool IsDirEmpty(char*);
