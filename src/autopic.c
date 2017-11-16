@@ -36,6 +36,7 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 		if (!IsDirExists(arg_buffer[arg_counter])) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
 		if (!IsDirEmpty(arg_buffer[arg_counter])) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 	}
+	if (!AreDirNamesUniqe(arg_buffer)){printf("Directories names are not unique. Closing\n"); return 5;}
 	return CHECK_OK;
 }
 
