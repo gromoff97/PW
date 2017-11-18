@@ -12,13 +12,13 @@ typedef enum {
 	CHECK_INVALID_ARG_COUNT,
 	CHECK_DIR_NOT_EXISTS,
 	CHECK_DIR_NOT_EMPTY,
-	CHECK_DIRS_NAMES_NOT_UNIQE
+	CHECK_DIRS_NAMES_NOT_UNIQUE
 } CheckArgErrCode;
 
 CheckArgErrCode AreArgsValid(int,char**);
 	static bool IsDirExists(char*);
 	static bool IsDirEmpty(char*);
-	static bool AreDirNamesUniqe(char**);
+	static bool AreDirNamesUnique(char**);
 
 int main(int argc, char** argv)
 {
@@ -39,7 +39,7 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 		if (IsDirExists(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
 		if (IsDirEmpty(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 	}
-	if (AreDirNamesUniqe(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQE;}
+	if (AreDirNamesUnique(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQUE;}
 	return CHECK_OK;
 }
 
@@ -68,7 +68,7 @@ static bool IsDirEmpty(char* dir_path)
 	return true;
 }
 
-static bool AreDirNamesUniqe(char** dir_buffer)
+static bool AreDirNamesUnique(char** dir_buffer)
 {
 	int dir_cmp_res,base_cmp_res;
 	for (size_t buf_counter = 1; buf_counter < REQARGC; buf_counter++)
