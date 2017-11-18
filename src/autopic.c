@@ -2,6 +2,6 @@
 
 int main(int argc, char** argv)
 {
-	if (AreArgsValid(argc,argv) != 0) return 1;
+	if (AreArgsValid(argc,argv) != CHECK_OK) return 1;
 	return 0;
 }
