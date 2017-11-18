@@ -27,9 +27,9 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
+CheckArgErrCode AreArgsValid(int arg_count,char** arg_buffer)
 {
-	if (IsArgCountValid(argcount) == false) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
+	if (IsArgCountValid(arg_count) == false) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
 	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
 	{
 		if (IsDirExists(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
@@ -39,9 +39,9 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 	return CHECK_OK;
 }
 
-static bool IsArgCountValid(int argcount)
+static bool IsArgCountValid(int arg_count)
 {
-	if (argcount != REQARGC) return false;
+	if (arg_count != REQARGC) return false;
 	return true;
 }
 
