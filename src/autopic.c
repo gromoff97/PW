@@ -70,5 +70,6 @@ static bool IsDirEmpty(char* dir_path)
 
 static bool AreDirNamesUniqe(char** dir_buffer)
 {
+	int dir_cmp_res,base_cmp_res;
 	return true;
 }
