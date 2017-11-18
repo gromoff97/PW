@@ -1,3 +1,13 @@
+#ifndef _ARGCHECK_H_
+#define _ARGCHECK_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <stdbool.h>
+#include <libgen.h>
+#include <string.h>
+
 #define REQARGC 3
 
 typedef enum {
@@ -9,7 +19,5 @@ typedef enum {
 } CheckArgErrCode;
 
 CheckArgErrCode AreArgsValid(int,char**);
-	static bool IsArgCountValid(int);
-	static bool IsDirExists(char*);
-	static bool IsDirEmpty(char*);
-	static bool AreDirNamesUnique(char**);
+
+#endif
