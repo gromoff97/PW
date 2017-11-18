@@ -16,6 +16,7 @@ typedef enum {
 } CheckArgErrCode;
 
 CheckArgErrCode AreArgsValid(int,char**);
+	static bool IsArgCountValid(int);
 	static bool IsDirExists(char*);
 	static bool IsDirEmpty(char*);
 	static bool AreDirNamesUnique(char**);
@@ -41,6 +42,11 @@ CheckArgErrCode AreArgsValid(int argcount,char** arg_buffer)
 	}
 	if (AreDirNamesUnique(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQUE;}
 	return CHECK_OK;
+}
+
+static bool IsArgCountValid(int argcount)
+{
+	return true;
 }
 
 static bool IsDirExists(char* dir_path)
