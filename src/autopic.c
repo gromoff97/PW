@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include <stdbool.h>
+#include <libgen.h>
+#include <string.h>
 
 #define REQARGC 3
 
