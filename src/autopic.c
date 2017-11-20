@@ -5,8 +5,15 @@ typedef enum {
 	SCRIPT_BAD
 } ScriptErrCode;
 
+ScriptErrCode ExecuteScript(char**);
+
 int main(int argc, char** argv)
 {
 	if (AreArgsValid(argc,argv) != CHECK_OK) return 1;
 	return 0;
+}
+
+ScriptErrCode ExecuteScript(char** arg_buf)
+{
+	return SCRIPT_OK;
 }
