@@ -2,6 +2,7 @@
 
 typedef enum {
 	SCRIPT_OK = 0,
+	SCRIPT_BAD_NOT_EXIST,
 	SCRIPT_BAD
 } ScriptErrCode;
 
