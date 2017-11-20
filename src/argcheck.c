@@ -66,7 +66,7 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 				(void) strcpy(dir_buffer[buf_counter2],tmp2);
 				free(tmp2);
 				free(tmp1);
-			}
 				if (base_cmp_res == 0 && dir_cmp_res == 0) return false;
+			}
 	return true;
 }
