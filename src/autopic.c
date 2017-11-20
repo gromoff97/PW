@@ -17,6 +17,7 @@ int main(int argc, char** argv)
 
 ScriptErrCode ExecuteScript(char** arg_buf)
 {
+	if (DoesScriptExist() != true) return SCRIPT_BAD;
 	return SCRIPT_OK;
 }
 
