@@ -8,12 +8,15 @@ static bool AreDirNamesUnique(char*[]);
 CheckArgErrCode AreArgsValid(int arg_count,char* arg_buffer[])
 {
 	if (IsArgCountValid(arg_count) == false) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
+
 	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
 	{
 		if (IsDirExists(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
 		if (IsDirEmpty(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 	}
+
 	if (AreDirNamesUnique(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQUE;}
+
 	return CHECK_OK;
 }
 
