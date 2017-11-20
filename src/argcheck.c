@@ -55,8 +55,8 @@ static bool AreDirNamesUnique(char** dir_buffer)
 		for (size_t buf_counter2 = 1; buf_counter2 < REQARGC; buf_counter2++)
 			if (buf_counter2 != buf_counter)
 			{
-				dir_cmp_res = strcmp(basename(dir_buffer[buf_counter]), basename(dir_buffer[buf_counter2]));
-				base_cmp_res = strcmp(dirname(dir_buffer[buf_counter]), dirname(dir_buffer[buf_counter2]));
+				base_cmp_res = strcmp(basename(dir_buffer[buf_counter]), basename(dir_buffer[buf_counter2]));
+				dir_cmp_res = strcmp(dirname(dir_buffer[buf_counter]), dirname(dir_buffer[buf_counter2]));
 				if (base_cmp_res == 0 && dir_cmp_res == 0) return false;
 			}
 	return true;
