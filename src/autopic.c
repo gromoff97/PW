@@ -24,5 +24,7 @@ ScriptErrCode ExecuteScript(char** arg_buf)
 
 static bool DoesScriptExist()
 {
-	return true;
+	FILE *fp = fopen ("src/defpic.sh", "r");
+	if (fp!=NULL) {fclose (fp);return true;}
+	return false;
 }
