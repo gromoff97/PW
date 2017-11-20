@@ -6,17 +6,17 @@ typedef enum {
 	SCRIPT_BAD
 } ScriptErrCode;
 
-ScriptErrCode ExecuteScript(char**);
+ScriptErrCode StartScript(char**);
 	static bool DoesScriptExist();
 
 int main(int argc, char* argv[])
 {
 	if (AreArgsValid(argc,argv) != CHECK_OK) return 1;
-	if (ExecuteScript(argv) != SCRIPT_OK) return 2;
+	if (StartScript(argv) != SCRIPT_OK) return 2;
 	return 0;
 }
 
-ScriptErrCode ExecuteScript(char** arg_buf)
+ScriptErrCode StartScript(char** arg_buf)
 {
 	if (DoesScriptExist() != true) return SCRIPT_BAD_NOT_EXIST;
 	return SCRIPT_OK;
