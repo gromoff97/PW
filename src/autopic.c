@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 ScriptErrCode StartScript(char** arg_buf)
 {
 	if (DoesScriptExist() != true) return SCRIPT_BAD_NOT_EXIST;
+	if (ExecuteMainScript() != 0) return SCRIPT_BAD;
 	return SCRIPT_OK;
 }
 
