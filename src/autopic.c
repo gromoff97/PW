@@ -19,8 +19,8 @@ int main(int argc, char* argv[])
 
 ScriptErrCode StartScript(char** arg_buf)
 {
-	if ( false == DoesScriptExist() ) return SCRIPT_BAD_NOT_EXIST;
-	if ( 0 != ExecuteMainScript() ) return SCRIPT_BAD;
+	if ( false == DoesScriptExist() ) {printf("Execute script does not exist.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
+	if ( 0 != ExecuteMainScript() ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
 
