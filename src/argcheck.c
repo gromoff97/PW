@@ -51,12 +51,21 @@ static bool IsDirEmpty(char* dir_path)
 static bool AreDirNamesUnique(char* dir_buffer[])
 {
 	int dir_cmp_res,base_cmp_res;
-	for (size_t buf_counter = 1; buf_counter < REQARGC; buf_counter++)
+	char *tmp1,*tmp2;
+	for (size_t buf_counter1 = 1; buf_counter1 < REQARGC; buf_counter1++)
 		for (size_t buf_counter2 = 1; buf_counter2 < REQARGC; buf_counter2++)
-			if (buf_counter2 != buf_counter)
+			if (buf_counter2 != buf_counter1)
 			{
-				base_cmp_res = strcmp(basename(dir_buffer[buf_counter]), basename(dir_buffer[buf_counter2]));
-				dir_cmp_res = strcmp(dirname(dir_buffer[buf_counter]), dirname(dir_buffer[buf_counter2]));
+				tmp1 = (char *) malloc(sizeof(char)*sizeof(dir_buffer[buf_counter1]));
+				tmp2 = (char *) malloc(sizeof(char)*sizeof(dir_buffer[buf_counter2]));
+				(void) strcpy(tmp1,dir_buffer[buf_counter1]);
+				(void) strcpy(tmp2,dir_buffer[buf_counter2]);
+				base_cmp_res = strcmp(basename(dir_buffer[buf_counter1]), basename(dir_buffer[buf_counter2]));
+				dir_cmp_res = strcmp(dirname(dir_buffer[buf_counter1]), dirname(dir_buffer[buf_counter2]));
+				(void) strcpy(dir_buffer[buf_counter1],tmp1);
+				(void) strcpy(dir_buffer[buf_counter2],tmp2);
+				free(tmp2);
+				free(tmp1);
 				if (base_cmp_res == 0 && dir_cmp_res == 0) return false;
 			}
 	return true;
