@@ -6,6 +6,7 @@ typedef enum {
 } ScriptErrCode;
 
 ScriptErrCode ExecuteScript(char**);
+	static bool DoesScriptExist();
 
 int main(int argc, char** argv)
 {
@@ -17,4 +18,9 @@ int main(int argc, char** argv)
 ScriptErrCode ExecuteScript(char** arg_buf)
 {
 	return SCRIPT_OK;
+}
+
+static bool DoesScriptExist()
+{
+	return true;
 }
