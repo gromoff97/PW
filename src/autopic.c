@@ -9,7 +9,7 @@ typedef enum {
 ScriptErrCode ExecuteScript(char**);
 	static bool DoesScriptExist();
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
 	if (AreArgsValid(argc,argv) != CHECK_OK) return 1;
 	if (ExecuteScript(argv) != SCRIPT_OK) return 2;

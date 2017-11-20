@@ -3,9 +3,9 @@
 static bool IsArgCountValid(int);
 static bool IsDirExists(char*);
 static bool IsDirEmpty(char*);
-static bool AreDirNamesUnique(char**);
+static bool AreDirNamesUnique(char*[]);
 
-CheckArgErrCode AreArgsValid(int arg_count,char** arg_buffer)
+CheckArgErrCode AreArgsValid(int arg_count,char* arg_buffer[])
 {
 	if (IsArgCountValid(arg_count) == false) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
 	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
@@ -48,7 +48,7 @@ static bool IsDirEmpty(char* dir_path)
 	return true;
 }
 
-static bool AreDirNamesUnique(char** dir_buffer)
+static bool AreDirNamesUnique(char* dir_buffer[])
 {
 	int dir_cmp_res,base_cmp_res;
 	for (size_t buf_counter = 1; buf_counter < REQARGC; buf_counter++)
