@@ -54,7 +54,7 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 	int dir_cmp_res,base_cmp_res;
 	char *tmp1,*tmp2;
 	for (size_t buf_counter1 = 1; buf_counter1 < REQARGC; buf_counter1++)
-		for (size_t buf_counter2 = 1; buf_counter2 < REQARGC; buf_counter2++)
+		for (size_t buf_counter2 = buf_counter1+1; buf_counter2 < REQARGC; buf_counter2++)
 			if (buf_counter2 != buf_counter1)
 			{
 				tmp1 = (char *) malloc(sizeof(char)*sizeof(dir_buffer[buf_counter1]));
