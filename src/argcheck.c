@@ -41,14 +41,15 @@ static bool IsDirEmpty(char* dir_path)
     if (dir)
     {
         while (readdir(dir) != NULL)
-        	file_counter++;
+        	file_counter++; /*increment if we find a file*/
         closedir(dir);
     }
-    if (file_counter != 2) return false;
+    if (file_counter != 2) return false; /*in linux in each directory exist at least 2 files called "." and ".."*/
 	return true;
 }
 
 static bool AreDirNamesUnique(char* dir_buffer[])
+/*dirname-foo changes his parametr to it's return literal. We use dirname multiple times so we got to save previous dir_buffer's value using strcpy-foo*/
 {
 	int dir_cmp_res,base_cmp_res;
 	char *tmp1,*tmp2;
