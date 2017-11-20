@@ -10,6 +10,7 @@ ScriptErrCode ExecuteScript(char**);
 int main(int argc, char** argv)
 {
 	if (AreArgsValid(argc,argv) != CHECK_OK) return 1;
+	if (ExecuteScript(argv) != SCRIPT_OK) return 2;
 	return 0;
 }
 
