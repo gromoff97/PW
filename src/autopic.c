@@ -8,6 +8,7 @@ typedef enum {
 
 ScriptErrCode StartScript(char**);
 	static bool DoesScriptExist();
+	static int ExecuteMainScript();
 
 int main(int argc, char* argv[])
 {
@@ -27,4 +28,9 @@ static bool DoesScriptExist()
 	FILE *fp = fopen ("src/defpic.sh", "r");
 	if (fp!=NULL) {fclose (fp);return true;}
 	return false;
+}
+
+static int ExecuteMainScript()
+{
+	return 0;
 }
