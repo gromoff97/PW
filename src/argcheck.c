@@ -7,29 +7,29 @@ static bool AreDirNamesUnique(char*[]);
 
 CheckArgErrCode AreArgsValid(int arg_count,char* arg_buffer[])
 {
-	if (IsArgCountValid(arg_count) == false) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
+	if ( false == IsArgCountValid(arg_count) ) {printf("bad arguments count.Closing\n");return CHECK_INVALID_ARG_COUNT;}
 
-	for (size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++)
+	for ( size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++ )
 	{
-		if (IsDirExists(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
-		if (IsDirEmpty(arg_buffer[arg_counter]) == false) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
+		if ( IsDirExists(arg_buffer[arg_counter]) == false ) {printf("Directory \'%s\' does not exist. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EXISTS;}
+		if ( IsDirEmpty(arg_buffer[arg_counter]) == false ) {printf("Directory \'%s\' is not empty. Closing\n",arg_buffer[arg_counter]); return CHECK_DIR_NOT_EMPTY;}
 	}
 
-	if (AreDirNamesUnique(arg_buffer) == false){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQUE;}
+	if ( false == AreDirNamesUnique(arg_buffer) ){printf("Directories names are not unique. Closing\n"); return CHECK_DIRS_NAMES_NOT_UNIQUE;}
 
 	return CHECK_OK;
 }
 
 static bool IsArgCountValid(int arg_count)
 {
-	if (arg_count != REQARGC) return false;
+	if ( REQARGC != arg_count ) return false;
 	return true;
 }
 
 static bool IsDirExists(char* dir_path)
 {
 	DIR* dir = opendir(dir_path);
-	if (dir)
+	if ( dir )
 	{
 		closedir(dir);
 		return true;
@@ -41,13 +41,13 @@ static bool IsDirEmpty(char* dir_path)
 {
 	size_t file_counter = 0;
 	DIR* dir = opendir(dir_path);
-    if (dir)
+    if ( dir )
     {
-        while (readdir(dir) != NULL)
+        while ( NULL != readdir(dir) )
         	file_counter++; /*increment if we find a file*/
         closedir(dir);
     }
-    if (file_counter != 2) return false; /*in linux in each directory exist at least 2 files called "." and ".."*/
+    if ( 2 != file_counter ) return false; /*in linux in each directory exist at least 2 files called "." and ".."*/
 	return true;
 }
 
@@ -75,7 +75,7 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 
 			free(tmp2);
 				
-			if (base_cmp_res == 0 && dir_cmp_res == 0) 
+			if ( 0 == base_cmp_res && 0 == dir_cmp_res ) 
 			{
 				free(tmp1);
 				return false;
