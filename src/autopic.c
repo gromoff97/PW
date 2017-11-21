@@ -1,6 +1,7 @@
 #include <argcheck.h>
 
 #define SH_PATH "./src/defpic.sh"
+#define SHEBANG_RAW "#!/bin/sh\n"
 
 typedef enum {
 	SCRIPT_OK = 0,
@@ -30,7 +31,7 @@ ScriptErrCode StartScript(int arg_count,char** arg_buf)
 static bool DoesScriptExist()
 {
 	FILE *fp = fopen (SH_PATH, "r");
-	if ( fp!=NULL ) {
+	if ( NULL != fp ) {
 
 		if ( false == DoesShebangExist(fp) )
 		{
