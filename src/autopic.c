@@ -1,5 +1,7 @@
 #include <argcheck.h>
 
+#define SH_PATH "src/defpic.sh"
+
 typedef enum {
 	SCRIPT_OK = 0,
 	SCRIPT_BAD_NOT_EXIST,
@@ -26,7 +28,7 @@ ScriptErrCode StartScript(char** arg_buf)
 
 static bool DoesScriptExist()
 {
-	FILE *fp = fopen ("src/defpic.sh", "r");
+	FILE *fp = fopen (SH_PATH, "r");
 	if (fp!=NULL) {fclose (fp);return true;}
 	return false;
 }
