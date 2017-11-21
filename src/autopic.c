@@ -10,7 +10,7 @@ typedef enum {
 
 ScriptErrCode StartScript(int,char**);
 	static bool DoesScriptExist();
-		static bool DoesShebangExist();
+		static bool DoesShebangExist(FILE*);
 	static int ExecuteMainScript();
 
 int main(int argc, char* argv[])
@@ -32,7 +32,7 @@ static bool DoesScriptExist()
 	FILE *fp = fopen (SH_PATH, "r");
 	if ( fp!=NULL ) {
 
-		if ( false == DoesShebangExist() )
+		if ( false == DoesShebangExist(fp) )
 		{
 			fclose(fp);
 			return false;
@@ -44,7 +44,7 @@ static bool DoesScriptExist()
 	return false;
 }
 
-static bool DoesShebangExist()
+static bool DoesShebangExist(FILE* file_pointer)
 {
 	return true;
 }
