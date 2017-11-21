@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
-	if ( false == DoesScriptExist() ) {printf("Execute script does not exist.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
+	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang if first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
 	if ( 0 != ExecuteMainScript() ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
