@@ -47,6 +47,12 @@ static bool DoesScriptExist()
 
 static bool DoesShebangExist(FILE* file_pointer)
 {
+	char check_str[sizeof(SHEBANG_RAW)];
+	if ( NULL != file_pointer )
+	{
+		(void) fgets(check_str,sizeof(check_str),file_pointer);
+		if (strcmp(check_str,SHEBANG_RAW) != 0) return false;
+	}
 	return true;
 }
 
