@@ -30,7 +30,17 @@ ScriptErrCode StartScript(int arg_count,char** arg_buf)
 static bool DoesScriptExist()
 {
 	FILE *fp = fopen (SH_PATH, "r");
-	if (fp!=NULL) {fclose (fp);return true;}
+	if ( fp!=NULL ) {
+
+		if ( false == DoesShebangExist() )
+		{
+			fclose(fp);
+			return false;
+		}
+
+		fclose (fp);
+		return true;
+	}
 	return false;
 }
 
