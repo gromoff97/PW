@@ -1,6 +1,6 @@
 #include <argcheck.h>
 
-#define SH_PATH "./src/defpic.sh"
+#define SH_PATH "./src/SH/defpic.sh"
 #define SHEBANG_RAW "#!/bin/sh\n"
 #define COMMAND_BUF_SIZE ( 256 )
 
