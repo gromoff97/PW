@@ -14,6 +14,7 @@ ScriptErrCode StartScript(int,char**);
 		static bool DoesShebangExist(FILE*);
 	static int ExecuteWatchLoop();
 		static bool IsPic(char[]);
+		static int DelFile(char*,char*);
 
 int main(int argc, char* argv[])
 {
