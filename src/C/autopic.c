@@ -73,3 +73,15 @@ static bool IsPic(char file_name[])
 	return false;
 }
 
+static int DelFile(char* file_name,char* dir_name)
+{
+	char command_buffer[COMMAND_BUF_SIZE];
+	memset(command_buffer,0,COMMAND_BUF_SIZE);
+	(void) strcat(command_buffer,"cd ");
+	(void) strcat(command_buffer,dir_name);
+	(void) strcat(command_buffer," && rm -rf ");
+	(void) strcat(command_buffer,file_name);
+	(void) strcat(command_buffer," && (cd -) > /dev/null");
+	return system(command_buffer);
+}
+
