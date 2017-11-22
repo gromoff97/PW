@@ -87,3 +87,8 @@ static int DelFile(char* file_name,char* dir_name)
 	return system(command_buffer);
 }
 
+static bool IsStopFile(char* file_name)
+{
+	if ( 0 != strcmp(file_name,STOP_FILE_NAME) ) return false;
+	return true;
+}
