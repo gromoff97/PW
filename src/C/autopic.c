@@ -62,3 +62,12 @@ static int ExecuteWatchLoop()
 {
 	return system(SH_PATH);
 }
+
+static bool IsPic(char file_name[])
+{
+	char ext[5];
+	memcpy( ext, &file_name[strlen(file_name)-4], 4 );
+	ext[4] = '\0';
+	if (0 == strcmp(".jpg\0",ext) || 0 == strcmp(".png\0",ext)) return true;
+	return false;
+}
