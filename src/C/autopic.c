@@ -13,6 +13,7 @@ ScriptErrCode StartScript(int,char**);
 	static bool DoesScriptExist();
 		static bool DoesShebangExist(FILE*);
 	static int ExecuteWatchLoop();
+		static bool IsPic(char[]);
 
 int main(int argc, char* argv[])
 {
