@@ -3,6 +3,7 @@
 #define SH_PATH "./src/SH/defpic.sh"
 #define SHEBANG_RAW "#!/bin/sh\n"
 #define COMMAND_BUF_SIZE ( 256 )
+#define STOP_FILE_NAME ".end_inotify_properly"
 
 typedef enum {
 	SCRIPT_OK = 0,
