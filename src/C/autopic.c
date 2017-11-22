@@ -2,6 +2,7 @@
 
 #define SH_PATH "./src/defpic.sh"
 #define SHEBANG_RAW "#!/bin/sh\n"
+#define COMMAND_BUF_SIZE ( 256 )
 
 typedef enum {
 	SCRIPT_OK = 0,
@@ -71,3 +72,4 @@ static bool IsPic(char file_name[])
 	if (0 == strcmp(".jpg\0",ext) || 0 == strcmp(".png\0",ext)) return true;
 	return false;
 }
+
