@@ -17,6 +17,7 @@ ScriptErrCode StartScript(int,char**);
 	static int ExecuteWatchLoop();
 		static bool IsPic(char[]);
 		static int DelFile(char*,char*);
+		static bool IsStopFile(char*);
 
 int main(int argc, char* argv[])
 {
