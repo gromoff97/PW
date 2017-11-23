@@ -14,7 +14,7 @@ typedef enum {
 ScriptErrCode StartScript(int,char**);
 	static bool DoesScriptExist();
 		static bool DoesShebangExist(FILE*);
-	static int ExecuteWatchLoop();
+	static int ExecuteWatchLoop(char*[]);
 		static bool IsPic(char[]);
 		static int DelFile(char*,char*);
 		static bool IsStopFile(char*);
@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
 	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang if first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
-	if ( 0 != ExecuteWatchLoop() ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
+	if ( 0 != ExecuteWatchLoop(arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
 
@@ -61,7 +61,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 	return true;
 }
 
-static int ExecuteWatchLoop()
+static int ExecuteWatchLoop(char *argv[])
 {
 	return system(SH_PATH);
 }
