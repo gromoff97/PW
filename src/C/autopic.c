@@ -68,7 +68,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 static int ExecuteWatchLoop(char *argv[])
 {
 	int length,i,fd,wd;
-	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
+	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1],**out_folder_buf = &argv[2]; // first folder is watch folder. Others are out-folders.
 
 	fd = inotify_init();
 	if ( fd < 0 ) return 1;
