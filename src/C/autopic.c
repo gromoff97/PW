@@ -63,7 +63,9 @@ static bool DoesShebangExist(FILE* file_pointer)
 
 static int ExecuteWatchLoop(char *argv[])
 {
-	return system(SH_PATH);
+	int length,i,fd,wd;
+	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
+	return 0;
 }
 
 static bool IsPic(char file_name[])
