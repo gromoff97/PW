@@ -79,7 +79,13 @@ static int ExecuteWatchLoop(char *argv[])
 	{
 		i = 0;
 		length = read( fd, event_buffer, EVENT_BUF_LEN ); 
-		if ( length < 0 ) return 2; 
+		if ( length < 0 ) return 2;
+		while ( i < length )
+		{
+			struct inotify_event *event = ( struct inotify_event * ) &event_buffer[ i ];
+			//here will be conditions
+			i += EVENT_SIZE + event->len;
+		}
 	}
 
 	inotify_rm_watch( fd, wd );
