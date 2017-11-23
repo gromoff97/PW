@@ -74,7 +74,12 @@ static int ExecuteWatchLoop(char *argv[])
 
 	wd = inotify_add_watch( fd, watch_folder, IN_CLOSE_WRITE | IN_CREATE | IN_MOVED_TO);
 
-	//here will be true-loop
+	while (true)
+	{
+		i = 0;
+		length = read( fd, event_buffer, EVENT_BUF_LEN ); 
+		if ( length < 0 ) return 2; 
+	}
 
 	inotify_rm_watch( fd, wd );
 	close( fd );
