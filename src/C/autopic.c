@@ -5,6 +5,8 @@
 #define SHEBANG_RAW "#!/bin/sh\n"
 #define COMMAND_BUF_SIZE ( 256 )
 #define STOP_FILE_NAME ".end_inotify_properly"
+#define EVENT_SIZE ( sizeof (struct inotify_event) )
+#define EVENT_BUF_LEN ( 1024 * ( EVENT_SIZE + 16 ) )
 
 typedef enum {
 	SCRIPT_OK = 0,
