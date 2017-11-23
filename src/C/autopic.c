@@ -65,6 +65,16 @@ static int ExecuteWatchLoop(char *argv[])
 {
 	int length,i,fd,wd;
 	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
+
+	fd = inotify_init();
+	if ( fd < 0 ) return 1;
+
+	wd = inotify_add_watch( fd, watch_folder, IN_CLOSE_WRITE | IN_CREATE | IN_MOVED_TO);
+
+	//here will be true-loop
+
+	inotify_rm_watch( fd, wd );
+	close( fd );
 	return 0;
 }
 
