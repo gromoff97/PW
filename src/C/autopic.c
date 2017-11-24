@@ -83,7 +83,17 @@ static int ExecuteWatchLoop(char *argv[])
 		while ( i < length )
 		{
 			struct inotify_event *event = ( struct inotify_event * ) &event_buffer[ i ];
-			//here will be conditions
+			if ( event->len )
+			{
+				if ( event-> mask & IN_CREATE )
+				{
+					if ( event->mask & IN_ISDIR )
+						{if ( 0 != DelFile(event->name,argv[1]) ) return 3;}
+					else 
+						if ( IsStopFile(event->name) == true) return 0;
+				}
+ 				
+			}
 			i += EVENT_SIZE + event->len;
 		}
 	}
