@@ -22,7 +22,7 @@ ScriptErrCode StartScript(int,char**);
 		static bool IsPic(char[]);
 		static int DelFile(char*,char*);
 		static bool IsStopFile(char*);
-		static int ExecuteShScript(int,char*[]);
+		static int ExecuteShScript(int,char*[],char *);
 
 int main(int argc, char* argv[])
 {
@@ -69,7 +69,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 static int ExecuteWatchLoop(int argc,char *argv[])
 {
 	int length,i,fd,wd;
-	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1],**out_folder_buf = &argv[2]; // first folder is watch folder. Others are out-folders.
+	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
 
 	fd = inotify_init();
 	if ( fd < 0 ) return 1;
@@ -99,7 +99,7 @@ static int ExecuteWatchLoop(int argc,char *argv[])
 					if ( (!(event->mask & IN_ISDIR) && false == IsPic(event->name)) || (event->mask & IN_ISDIR))
 						{if ( 0 != DelFile(event->name,watch_folder) ) return 3;}
 					else
-						if (ExecuteShScript(argc-2,out_folder_buf) != 0) return 4;
+						if (ExecuteShScript(argc-1,&argv[1],event->name) != 0) return 4;
 				}
  				
 			}
@@ -139,7 +139,7 @@ static bool IsStopFile(char* file_name)
 	return true;
 }
 
-static int ExecuteShScript(int argc,char* out_dir_buffer[])
+static int ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
