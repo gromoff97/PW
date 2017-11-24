@@ -89,9 +89,17 @@ static int ExecuteWatchLoop(char *argv[])
 				if ( event-> mask & IN_CREATE )
 				{
 					if ( event->mask & IN_ISDIR )
-						{if ( 0 != DelFile(event->name,argv[1]) ) return 3;}
+						{if ( 0 != DelFile(event->name,watch_folder) ) return 3;}
 					else 
 						if ( IsStopFile(event->name) == true) return 0;
+				}
+
+				if ( (event->mask & IN_CLOSE_WRITE) || (event->mask & IN_MOVED_TO) )
+				{
+					if ( (!(event->mask & IN_ISDIR) && false == IsPic(event->name)) || (event->mask & IN_ISDIR))
+						{if ( 0 != DelFile(event->name,watch_folder) ) return 3;}
+					else
+						if (ExecuteShScript(out_folder_buf) != 0) return 4;
 				}
  				
 			}
