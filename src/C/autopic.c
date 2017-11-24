@@ -18,11 +18,11 @@ typedef enum {
 ScriptErrCode StartScript(int,char**);
 	static bool DoesScriptExist();
 		static bool DoesShebangExist(FILE*);
-	static int ExecuteWatchLoop(char*[]);
+	static int ExecuteWatchLoop(int,char*[]);
 		static bool IsPic(char[]);
 		static int DelFile(char*,char*);
 		static bool IsStopFile(char*);
-		static int ExecuteShScript(char*[]);
+		static int ExecuteShScript(int,char*[]);
 
 int main(int argc, char* argv[])
 {
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
 	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang if first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
-	if ( 0 != ExecuteWatchLoop(arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
+	if ( 0 != ExecuteWatchLoop(arg_count,arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
 
@@ -66,7 +66,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 	return true;
 }
 
-static int ExecuteWatchLoop(char *argv[])
+static int ExecuteWatchLoop(int argc,char *argv[])
 {
 	int length,i,fd,wd;
 	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1],**out_folder_buf = &argv[2]; // first folder is watch folder. Others are out-folders.
@@ -99,7 +99,7 @@ static int ExecuteWatchLoop(char *argv[])
 					if ( (!(event->mask & IN_ISDIR) && false == IsPic(event->name)) || (event->mask & IN_ISDIR))
 						{if ( 0 != DelFile(event->name,watch_folder) ) return 3;}
 					else
-						if (ExecuteShScript(out_folder_buf) != 0) return 4;
+						if (ExecuteShScript(argc-2,out_folder_buf) != 0) return 4;
 				}
  				
 			}
@@ -139,7 +139,9 @@ static bool IsStopFile(char* file_name)
 	return true;
 }
 
-static int ExecuteShScript(char* out_dir_buffer[])
+static int ExecuteShScript(int argc,char* out_dir_buffer[])
 {
+	char command_buffer[COMMAND_BUF_SIZE];
+	memset(command_buffer,0,COMMAND_BUF_SIZE);
 	return 0;
 }
