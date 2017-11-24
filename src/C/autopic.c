@@ -22,6 +22,7 @@ ScriptErrCode StartScript(int,char**);
 		static bool IsPic(char[]);
 		static int DelFile(char*,char*);
 		static bool IsStopFile(char*);
+		static int ExecuteShScript(char*[]);
 
 int main(int argc, char* argv[])
 {
@@ -128,4 +129,9 @@ static bool IsStopFile(char* file_name)
 {
 	if ( 0 != strcmp(file_name,STOP_FILE_NAME) ) return false;
 	return true;
+}
+
+static int ExecuteShScript(char* out_dir_buffer[])
+{
+	return 0;
 }
