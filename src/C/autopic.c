@@ -14,12 +14,6 @@
 #define EVENT_SIZE ( sizeof (struct inotify_event) )
 #define EVENT_BUF_LEN ( 1024 * ( EVENT_SIZE + 16 ) )
 
-typedef enum {
-	SCRIPT_OK = 0,
-	SCRIPT_BAD_NOT_EXIST,
-	SCRIPT_BAD
-} ScriptErrCode;
-
 ScriptErrCode StartScript(int,char**);
 	static bool DoesScriptExist();
 		static bool DoesShebangExist(FILE*);
