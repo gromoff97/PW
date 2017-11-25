@@ -1,6 +1,10 @@
 #include <argcheck.h>
 #include <sys/inotify.h>
 #include <unistd.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define SH_PATH "./src/SH/defpic.sh"
 #define SHEBANG_RAW "#!/bin/bash\n"
