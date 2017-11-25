@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 #define SH_PATH "./src/SH/defpic.sh"
-#define SHEBANG_RAW "#!/bin/sh\n"
+#define SHEBANG_RAW "#!/bin/bash\n"
 #define COMMAND_BUF_SIZE ( 256 )
 #define STOP_FILE_NAME ".end_inotify_properly"
 #define EVENT_SIZE ( sizeof (struct inotify_event) )
@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
-	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang if first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
+	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang in first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
 	if ( 0 != ExecuteWatchLoop(arg_count,arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
