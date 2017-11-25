@@ -60,16 +60,16 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 /*dirname-foo changes his parametr to it's return literal. We use dirname multiple times so we got to save previous dir_buffer's value using strcpy-foo*/
 {
 	int dir_cmp_res,base_cmp_res;
-	char *tmp1,*tmp2;
+	char tmp1[256],tmp2[256];
 
 	for (size_t buf_counter1 = 1; buf_counter1 < REQARGC; buf_counter1++)
 	{
-		tmp1 = (char *) malloc(sizeof(char)*sizeof(dir_buffer[buf_counter1]));
+		memset(tmp1,0,256);
 		(void) strcpy(tmp1,dir_buffer[buf_counter1]);
 
 		for (size_t buf_counter2 = buf_counter1+1; buf_counter2 < REQARGC; buf_counter2++)
 		{
-			tmp2 = (char *) malloc(sizeof(char)*sizeof(dir_buffer[buf_counter2]));
+			memset(tmp2,0,256);
 			(void) strcpy(tmp2,dir_buffer[buf_counter2]);
 
 			base_cmp_res = strcmp(basename(dir_buffer[buf_counter1]), basename(dir_buffer[buf_counter2]));
@@ -77,17 +77,9 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 
 			(void) strcpy(dir_buffer[buf_counter1],tmp1);
 			(void) strcpy(dir_buffer[buf_counter2],tmp2);
-
-			free(tmp2);
 				
-			if ( 0 == base_cmp_res && 0 == dir_cmp_res ) 
-			{
-				free(tmp1);
-				return false;
-			}
+			if ( 0 == base_cmp_res && 0 == dir_cmp_res ) return false;
 		}
-
-		free(tmp1);
 	}
 	return true;
 }
