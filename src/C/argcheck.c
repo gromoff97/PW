@@ -1,4 +1,10 @@
 #include <argcheck.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <stdbool.h>
+#include <libgen.h>
+#include <string.h>
 
 static bool IsArgCountValid(int);
 static bool IsDirExists(char*);

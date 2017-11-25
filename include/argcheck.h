@@ -1,13 +1,6 @@
 #ifndef _ARGCHECK_H_
 #define _ARGCHECK_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <dirent.h>
-#include <stdbool.h>
-#include <libgen.h>
-#include <string.h>
-
 #define REQARGC 3
 
 typedef enum {
