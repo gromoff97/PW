@@ -1,10 +1,18 @@
-	static bool DoesScriptExist();
-		static bool DoesShebangExist(FILE*);
-	static int ExecuteWatchLoop(int,char*[]);
-		static bool IsPic(char[]);
-		static int DelFile(char*,char*);
-		static bool IsStopFile(char*);
-		static int ExecuteShScript(int,char*[],char *);
+#include <watcher.h>
+#include <sys/inotify.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+static bool DoesScriptExist();
+	static bool DoesShebangExist(FILE*);
+static int ExecuteWatchLoop(int,char*[]);
+	static bool IsPic(char[]);
+	static int DelFile(char*,char*);
+	static bool IsStopFile(char*);
+	static int ExecuteShScript(int,char*[],char *);
 
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
