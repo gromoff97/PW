@@ -8,4 +8,6 @@ typedef enum {
 	SCRIPT_BAD
 } ScriptErrCode;
 
+ScriptErrCode StartScript(int,char**);
+
 #endif
