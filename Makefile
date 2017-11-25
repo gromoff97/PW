@@ -1,5 +1,5 @@
 CC=gcc
-C_DEPS=src/C/autopic.c src/C/argcheck.c src/C/watcher.c
+C_DEPS=src/C/mainfile.c src/C/argcheck.c src/C/watcher.c
 SH_DEPS=src/SH/defpic.sh
 H_DEPS=include/argcheck.h include/watcher.h
 BUILD_DIR=build
