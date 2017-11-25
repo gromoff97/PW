@@ -6,8 +6,6 @@
 #include <libgen.h>
 #include <string.h>
 
-#define MAX_PATH_BUF_SIZE 256
-
 static bool IsArgCountValid(int);
 static bool IsDirExists(char*);
 static bool IsDirEmpty(char*);
