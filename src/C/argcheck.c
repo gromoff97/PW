@@ -6,6 +6,8 @@
 #include <libgen.h>
 #include <string.h>
 
+#define MAX_PATH_BUF_SIZE 256
+
 static bool IsArgCountValid(int);
 static bool IsDirExists(char*);
 static bool IsDirEmpty(char*);
@@ -60,16 +62,16 @@ static bool AreDirNamesUnique(char* dir_buffer[])
 /*dirname-foo changes his parametr to it's return literal. We use dirname multiple times so we got to save previous dir_buffer's value using strcpy-foo*/
 {
 	int dir_cmp_res,base_cmp_res;
-	char tmp1[256],tmp2[256];
+	char tmp1[MAX_PATH_BUF_SIZE],tmp2[MAX_PATH_BUF_SIZE];
 
 	for (size_t buf_counter1 = 1; buf_counter1 < REQARGC; buf_counter1++)
 	{
-		memset(tmp1,0,256);
+		memset(tmp1,0,MAX_PATH_BUF_SIZE);
 		(void) strcpy(tmp1,dir_buffer[buf_counter1]);
 
 		for (size_t buf_counter2 = buf_counter1+1; buf_counter2 < REQARGC; buf_counter2++)
 		{
-			memset(tmp2,0,256);
+			memset(tmp2,0,MAX_PATH_BUF_SIZE);
 			(void) strcpy(tmp2,dir_buffer[buf_counter2]);
 
 			base_cmp_res = strcmp(basename(dir_buffer[buf_counter1]), basename(dir_buffer[buf_counter2]));
