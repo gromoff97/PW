@@ -1,7 +1,7 @@
 CC=gcc
-C_DEPS=src/C/autopic.c src/C/argcheck.c
+C_DEPS=src/C/autopic.c src/C/argcheck.c src/C/watcher.c
 SH_DEPS=src/SH/defpic.sh
-H_DEPS=include/argcheck.h
+H_DEPS=include/argcheck.h include/watcher.h
 BUILD_DIR=build
 CFLAGS=-I include -std=c11 -ftrapv -fverbose-asm -pedantic -Wall -Werror
 
