@@ -123,14 +123,10 @@ static int ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
-	(void) strcat(command_buffer,SH_PATH);
-	(void) strcat(command_buffer," ");
-	(void) strcat(command_buffer,pic_name);
-	(void) strcat(command_buffer," ");
+	sprintf(command_buffer,"%s %s",SH_PATH,pic_name);
+	
 	for (int counter = 0; counter < dir_count; counter++)
-	{
-		(void) strcat(command_buffer,dir_buf[counter]);
-		(void) strcat(command_buffer," ");
-	}
+		sprintf(command_buffer+strlen(command_buffer)," %s ",dir_buf[counter]);
+
 	return system(command_buffer);
 }
