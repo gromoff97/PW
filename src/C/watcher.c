@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define SH_DELFILE_PATH "./src/SH/delfile.sh"
+
 static bool DoesScriptExist();
 	static bool DoesShebangExist(FILE*);
 static int ExecuteWatchLoop(int,char*[]);
@@ -109,7 +111,7 @@ static int DelFile(char* file_name,char* dir_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
-	sprintf(command_buffer,"./src/SH/delfile.sh %s %s",dir_name,file_name);
+	sprintf(command_buffer,"%s %s %s",SH_DELFILE_PATH,dir_name,file_name);
 	return system(command_buffer);
 }
 
