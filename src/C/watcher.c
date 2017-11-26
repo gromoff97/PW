@@ -132,6 +132,5 @@ static int ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
 		(void) strcat(command_buffer,dir_buf[counter]);
 		(void) strcat(command_buffer," ");
 	}
-	if ( 0 != system(command_buffer) ) return 1;
-	return 0;
+	return system(command_buffer);
 }
