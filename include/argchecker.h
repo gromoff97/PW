@@ -1,5 +1,5 @@
-#ifndef _ARGCHECK_H_
-#define _ARGCHECK_H_
+#ifndef _ARGCHECKER_H_
+#define _ARGCHECKER_H_
 
 #define REQARGC 3
 #define MAX_PATH_BUF_SIZE 256

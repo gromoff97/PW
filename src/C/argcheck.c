@@ -1,4 +1,4 @@
-#include <argcheck.h>
+#include <argchecker.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
