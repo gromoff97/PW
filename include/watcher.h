@@ -2,6 +2,7 @@
 #define _WATCHER_H_
 
 #define SH_PATH "./src/SH/defpic.sh"
+#define SH_DELFILE_PATH "./src/SH/delfile.sh"
 #define SHEBANG_RAW "#!/bin/bash\n"
 #define COMMAND_BUF_SIZE ( 256 )
 #define STOP_FILE_NAME ".end_inotify_properly"

@@ -6,8 +6,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SH_DELFILE_PATH "./src/SH/delfile.sh"
-
 static bool DoesScriptExist();
 	static bool DoesShebangExist(FILE*);
 static int ExecuteWatchLoop(int,char*[]);
