@@ -109,11 +109,7 @@ static int DelFile(char* file_name,char* dir_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
-	(void) strcat(command_buffer,"cd ");
-	(void) strcat(command_buffer,dir_name);
-	(void) strcat(command_buffer," && rm -rf ");
-	(void) strcat(command_buffer,file_name);
-	(void) strcat(command_buffer," && (cd -) > /dev/null");
+	sprintf(command_buffer,"./src/SH/delfile.sh %s %s",dir_name,file_name);
 	return system(command_buffer);
 }
 
