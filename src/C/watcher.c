@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-static bool DoesScriptExist();
+static bool DoScriptsExist();
 	static bool DoesShebangExist(FILE*);
 static int ExecuteWatchLoop(int,char*[]);
 	static bool IsPic(char[]);
@@ -17,12 +17,12 @@ static int ExecuteWatchLoop(int,char*[]);
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
-	if ( false == DoesScriptExist() ) {printf("Execute script does not exist or no shebang in first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
+	if ( false == DoScriptsExist() ) {printf("Execute script does not exist or no shebang in first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
 	if ( 0 != ExecuteWatchLoop(arg_count,arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
 }
 
-static bool DoesScriptExist()
+static bool DoScriptsExist()
 {
 	FILE *fp = fopen (SH_MAIN_PATH, "r");
 	if ( NULL != fp ) {
