@@ -6,8 +6,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SH_FILE_COUNT 2
-
 struct FileInfo
 {
 	char* file_name;
