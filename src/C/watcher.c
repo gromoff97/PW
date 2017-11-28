@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define SH_FILE_COUNT 2
+
 struct FileInfo
 {
 	char* file_name;
@@ -33,12 +35,12 @@ ScriptErrCode StartScript(int arg_count,char** arg_buf)
 
 static bool DoScriptsExist()
 {
-	FileInfo sh_file_buffer[2];
+	FileInfo sh_file_buffer[SH_FILE_COUNT];
 
 	sh_file_buffer[0].file_name=SH_MAIN_PATH;
 	sh_file_buffer[1].file_name=SH_DELFILE_PATH;
-	
-	for (size_t file_counter = 0; file_counter < 2; file_counter++)
+
+	for (size_t file_counter = 0; file_counter < SH_FILE_COUNT; file_counter++)
 	{
 		FILE* fp = fopen(sh_file_buffer[file_counter].file_name,"r");
 		if (NULL == fp) 
@@ -54,7 +56,7 @@ static bool DoScriptsExist()
 			}
 	}
 
-	for (size_t file_counter = 0; file_counter < 2; file_counter++)
+	for (size_t file_counter = 0; file_counter < SH_FILE_COUNT; file_counter++)
 		if (false == sh_file_buffer[file_counter].is_opened || false == sh_file_buffer[file_counter].has_shebang)
 			return false;
 
