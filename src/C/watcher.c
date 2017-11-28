@@ -33,19 +33,32 @@ ScriptErrCode StartScript(int arg_count,char** arg_buf)
 
 static bool DoScriptsExist()
 {
-	FILE *fp = fopen (SH_MAIN_PATH, "r");
-	if ( NULL != fp ) {
+	FileInfo sh_file_buffer[2];
 
-		if ( false == DoesShebangExist(fp) )
-		{
-			fclose(fp);
-			return false;
-		}
-
-		fclose (fp);
-		return true;
+	sh_file_buffer[0].file_name=SH_MAIN_PATH;
+	sh_file_buffer[1].file_name=SH_DELFILE_PATH;
+	
+	for (size_t file_counter = 0; file_counter < 2; file_counter++)
+	{
+		FILE* fp = fopen(sh_file_buffer[file_counter].file_name,"r");
+		if (NULL == fp) 
+			{
+				sh_file_buffer[file_counter].is_opened = false;
+				sh_file_buffer[file_counter].has_shebang = false;
+			}
+		else
+			{
+				sh_file_buffer[file_counter].is_opened = true;
+				sh_file_buffer[file_counter].has_shebang = DoesShebangExist(fp);
+				fclose(fp);
+			}
 	}
-	return false;
+
+	for (size_t file_counter = 0; file_counter < 2; file_counter++)
+		if (false == sh_file_buffer[file_counter].is_opened || false == sh_file_buffer[file_counter].has_shebang)
+			return false;
+
+	return true;
 }
 
 static bool DoesShebangExist(FILE* file_pointer)
