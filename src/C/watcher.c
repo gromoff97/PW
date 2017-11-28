@@ -6,6 +6,15 @@
 #include <string.h>
 #include <stdlib.h>
 
+struct FileInfo
+{
+	char* file_name;
+	bool is_opened;
+	bool has_shebang;
+};
+
+typedef struct FileInfo FileInfo;
+
 static bool DoScriptsExist();
 	static bool DoesShebangExist(FILE*);
 static int ExecuteWatchLoop(int,char*[]);
