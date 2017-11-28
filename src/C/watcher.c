@@ -18,7 +18,8 @@ struct FileInfo
 typedef struct FileInfo FileInfo;
 
 static bool DoScriptsExist();
-	static bool DoesShebangExist(FILE*);
+	static void InitFileInfoBuffer(FileInfo[]);
+		static bool DoesShebangExist(FILE*);
 static int ExecuteWatchLoop(int,char*[]);
 	static bool IsPic(char[]);
 	static int DelFile(char*,char*);
@@ -37,30 +38,34 @@ static bool DoScriptsExist()
 {
 	FileInfo sh_file_buffer[SH_FILE_COUNT];
 
-	sh_file_buffer[0].file_name=SH_MAIN_PATH;
-	sh_file_buffer[1].file_name=SH_DELFILE_PATH;
-
-	for (size_t file_counter = 0; file_counter < SH_FILE_COUNT; file_counter++)
-	{
-		FILE* fp = fopen(sh_file_buffer[file_counter].file_name,"r");
-		if (NULL == fp) 
-			{
-				sh_file_buffer[file_counter].is_opened = false;
-				sh_file_buffer[file_counter].has_shebang = false;
-			}
-		else
-			{
-				sh_file_buffer[file_counter].is_opened = true;
-				sh_file_buffer[file_counter].has_shebang = DoesShebangExist(fp);
-				fclose(fp);
-			}
-	}
+	InitFileInfoBuffer(sh_file_buffer);
 
 	for (size_t file_counter = 0; file_counter < SH_FILE_COUNT; file_counter++)
 		if (false == sh_file_buffer[file_counter].is_opened || false == sh_file_buffer[file_counter].has_shebang)
 			return false;
 
 	return true;
+}
+
+static void InitFileInfoBuffer(FileInfo file_info_buf[])
+{
+	file_info_buf[1].file_name = SH_MAIN_PATH;
+	file_info_buf[0].file_name = SH_DELFILE_PATH;
+
+	for (size_t file_counter = 0; file_counter < SH_FILE_COUNT; file_counter++)
+	{
+		FILE* fp = fopen(file_info_buf[file_counter].file_name,"r");
+		if (NULL == fp) 
+			file_info_buf[file_counter].is_opened = file_info_buf[file_counter].has_shebang = false;
+		else
+		{
+			file_info_buf[file_counter].is_opened = true;
+			file_info_buf[file_counter].has_shebang = DoesShebangExist(fp);
+			fclose(fp);
+		}
+	}
+
+	return;
 }
 
 static bool DoesShebangExist(FILE* file_pointer)
