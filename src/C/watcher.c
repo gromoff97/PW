@@ -24,7 +24,7 @@ ScriptErrCode StartScript(int arg_count,char** arg_buf)
 
 static bool DoesScriptExist()
 {
-	FILE *fp = fopen (SH_PATH, "r");
+	FILE *fp = fopen (SH_MAIN_PATH, "r");
 	if ( NULL != fp ) {
 
 		if ( false == DoesShebangExist(fp) )
@@ -123,7 +123,7 @@ static int ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
-	sprintf(command_buffer,"%s %s",SH_PATH,pic_name);
+	sprintf(command_buffer,"%s %s",SH_MAIN_PATH,pic_name);
 	
 	for (int counter = 0; counter < dir_count; counter++)
 		sprintf(command_buffer+strlen(command_buffer)," %s ",dir_buf[counter]);
