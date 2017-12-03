@@ -1,2 +1,15 @@
 #!/bin/bash
 req_prog_array=("pngquant" "mogrify")
+for prog_name in "${req_prog_array[@]}"
+do
+	type $prog_name
+	type_res=$?
+	hash $prog_name
+	hash_res=$?
+	if [ ! $type_res -eq 0 ] || [ ! $hash_res -eq 0 ] ; 
+	then
+		echo "Unfortunately,\"$prog_name\" was not found. Please, install it. Exiting"
+		exit 1
+	fi
+done
+echo "Success! Now u can enter \"make\"-command"
