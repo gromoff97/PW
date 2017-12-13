@@ -1,1 +1,20 @@
 #!/bin/bash
+work_dir=$(dirname -- "$0")
+command_content="./build/main "
+for rel_path
+do
+if [ ! -d "$rel_path" ];
+then
+	echo "error: $rel_path does not exist"
+	exit 1;
+fi
+
+abs_path=$(readlink -f $rel_path)
+command_content="${command_content} ${abs_path}"
+
+done
+echo "$command_content"
+cd $work_dir;
+$command_content
+
+
