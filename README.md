@@ -12,8 +12,7 @@
 ./configure
 make
 ```
-Пока программа может запускаться только из директории проекта, поэтому нынешний порядок запуска таков:
+Чтобы запустить программу достаточно выполнить следующее:
 ```bash
-cd <project_folder>
-./build/main <watch_dir> <output_dir>
+./<project_path>/dpw <watch_dir> <output_dir>
 ```
