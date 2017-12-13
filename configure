@@ -1,4 +1,6 @@
 #!/bin/bash
+
+#-------------------checking if needed programms are installed-------------------
 req_prog_array=("pngquant" "mogrify")
 for prog_name in "${req_prog_array[@]}"
 do
@@ -11,5 +13,19 @@ do
 		echo "Unfortunately,\"$prog_name\" was not found. Please, install it. Exiting"
 		exit 1
 	fi
-done
+	done
+
+#-------------------creating build-dir-----------------------------------------
+build_dir_name="build"
+work_dir=$(dirname -- "$0")
+cd ${work_dir}
+
+if [ -d "$build_dir_name" ]; 
+then
+  echo "build-dir already exists. Delete this dir if you want to make configure finish"
+  exit 0
+fi
+
+mkdir ${build_dir_name}
+
 echo "Success! Now u can enter \"make\"-command"
