@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdint.h>
 
-static bool IsArgCountValid(int);
+static bool IsArgCountValid(int32_t);
 static bool IsDirExists(char*);
 static bool IsDirEmpty(char*);
 static bool AreDirNamesUnique(char*[]);
@@ -26,7 +26,7 @@ CheckArgErrCode AreArgsValid(int arg_count,char* arg_buffer[])
 	return CHECK_OK;
 }
 
-static bool IsArgCountValid(int arg_count)
+static bool IsArgCountValid(int32_t arg_count)
 {
 	if ( REQARGC != arg_count ) return false;
 	return true;
@@ -60,7 +60,7 @@ static bool IsDirEmpty(char* dir_path)
 static bool AreDirNamesUnique(char* dir_buffer[])
 /*dirname-foo changes his parametr to it's return literal. We use dirname multiple times so we got to save previous dir_buffer's value using strcpy-foo*/
 {
-	int dir_cmp_res,base_cmp_res;
+	int8_t dir_cmp_res,base_cmp_res;
 	char tmp1[MAX_PATH_BUF_SIZE],tmp2[MAX_PATH_BUF_SIZE];
 
 	for (size_t buf_counter1 = 1; buf_counter1 < REQARGC; buf_counter1++)
