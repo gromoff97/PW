@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <libgen.h>
 #include <string.h>
+#include <stdint.h>
 
 static bool IsArgCountValid(int);
 static bool IsDirExists(char*);
