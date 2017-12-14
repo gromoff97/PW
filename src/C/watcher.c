@@ -19,11 +19,11 @@ typedef struct FileInfo FileInfo;
 static bool DoScriptsExist();
 	static void InitFileInfoBuffer(FileInfo[]);
 		static bool DoesShebangExist(FILE*);
-static int ExecuteWatchLoop(int,char*[]);
+static int32_t ExecuteWatchLoop(int,char*[]);
 	static bool IsPic(char[]);
-	static int DelFile(char*,char*);
+	static int32_t DelFile(char*,char*);
 	static bool IsStopFile(char*);
-	static int ExecuteShScript(int,char*[],char *);
+	static int32_t ExecuteShScript(int,char*[],char *);
 
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
@@ -78,7 +78,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 	return true;
 }
 
-static int ExecuteWatchLoop(int argc,char *argv[])
+static int32_t ExecuteWatchLoop(int argc,char *argv[])
 {
 	int length,i,fd,wd;
 	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
@@ -133,7 +133,7 @@ static bool IsPic(char file_name[])
 	return false;
 }
 
-static int DelFile(char* file_name,char* dir_name)
+static int32_t DelFile(char* file_name,char* dir_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
@@ -147,7 +147,7 @@ static bool IsStopFile(char* file_name)
 	return true;
 }
 
-static int ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
+static int32_t ExecuteShScript(int dir_count,char* dir_buf[],char *pic_name)
 {
 	char command_buffer[COMMAND_BUF_SIZE];
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
