@@ -80,7 +80,7 @@ static bool DoesShebangExist(FILE* file_pointer)
 
 static int32_t ExecuteWatchLoop(int32_t argc,char *argv[])
 {
-	int length,i,fd,wd;
+	int32_t length,i,fd,wd;
 	char event_buffer[EVENT_BUF_LEN], *watch_folder = argv[1]; // first folder is watch folder. Others are out-folders.
 
 	fd = inotify_init();
@@ -153,7 +153,7 @@ static int32_t ExecuteShScript(int32_t dir_count,char* dir_buf[],char *pic_name)
 	memset(command_buffer,0,COMMAND_BUF_SIZE);
 	sprintf(command_buffer,"%s %s",SH_MAIN_PATH,pic_name);
 	
-	for (int counter = 0; counter < dir_count; counter++)
+	for (size_t counter = 0; counter < dir_count; counter++)
 		sprintf(command_buffer+strlen(command_buffer)," %s ",dir_buf[counter]);
 
 	return system(command_buffer);
