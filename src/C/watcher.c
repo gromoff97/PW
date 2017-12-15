@@ -104,9 +104,9 @@ static int32_t ExecuteWatchLoop( int32_t argc, char *argv[] )
 				if ( event-> mask & IN_CREATE )
 				{
 					if ( event->mask & IN_ISDIR )
-						{if ( 0 != DelFile( event->name, watch_folder ) ) return 3;}
+						{ if ( 0 != DelFile( event->name, watch_folder ) ) return 3;}
 					else 
-						if ( IsStopFile( event->name ) == true ) return 0;
+						if ( IsStopFile( event->name ) == true ) { if ( 0 != DelFile( event->name, watch_folder ) ) return 3; return 0;}
 				}
 
 				if ( (event->mask & IN_CLOSE_WRITE) || (event->mask & IN_MOVED_TO) )
