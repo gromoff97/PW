@@ -29,7 +29,7 @@ static int32_t ExecuteWatchLoop(int32_t,char*[]);
 
 ScriptErrCode StartScript(int arg_count,char** arg_buf)
 {
-	if (AreArgsValid(arg_count,arg_buf) != CHECK_OK) return 1;
+	if ( AreArgsValid(arg_count,arg_buf) != CHECK_OK ) return SCRIPT_BAD_START_ARGS;
 	if ( false == DoScriptsExist() ) {printf("Execute script does not exist or no shebang in first line of file.Closing.\n");return SCRIPT_BAD_NOT_EXIST;}
 	if ( 0 != ExecuteWatchLoop(arg_count,arg_buf) ) {printf("Script failure. Closing.\n");return SCRIPT_BAD;}
 	return SCRIPT_OK;
