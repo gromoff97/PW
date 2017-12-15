@@ -1,8 +1,8 @@
 #ifndef _ARGCHECKER_H_
 #define _ARGCHECKER_H_
 
-#define REQARGC 3
-#define MAX_PATH_BUF_SIZE 256
+#define REQARGC ( 3 )
+#define MAX_PATH_BUF_SIZE ( 256 )
 
 typedef enum {
 	CHECK_OK = 0,
@@ -12,6 +12,6 @@ typedef enum {
 	CHECK_DIRS_NAMES_NOT_UNIQUE
 } CheckArgErrCode;
 
-CheckArgErrCode AreArgsValid(int,char**);
+CheckArgErrCode AreArgsValid( int, char** );
 
 #endif
