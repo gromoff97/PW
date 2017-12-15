@@ -1,3 +1,4 @@
+#include <argchecker.h>
 #include <watcher.h>
 #include <sys/inotify.h>
 #include <unistd.h>
