@@ -17,6 +17,6 @@ typedef enum {
 	SCRIPT_BAD
 } ScriptErrCode;
 
-ScriptErrCode StartScript( int, char** );
+ScriptErrCode StartWatching( int, char** );
 
 #endif
