@@ -39,6 +39,10 @@ if [ ! -f $pic_full_path ]; then
 fi
 #-----CHECKING PICTURE (END)-------
 
+SH_PATH="$(dirname "$(readlink -f "$0")")"
+SRC_PATH="$(dirname "$SH_PATH")"
+PROJECT_PATH="$(dirname "$SRC_PATH")"
+
 mv $pic_full_path $tmpdir
 shift
 shift
@@ -58,6 +62,9 @@ do
 		echo "$outdir was created."
 	fi
 cp $tmpdir/$pic_name_no_ext.png $outdir
+
+echo "$pic_name was created in $outdir" >> "$PROJECT_PATH/logs" 
+
 done
 
 rm -r $tmpdir/$pic_name
