@@ -4,7 +4,7 @@
 
 typedef enum {
 	CHECK_LANG_OK = 0,
-	CHECK_LANG_BAD
+	CHECK_LANG_NON_ENGL
 } LangErrCode;
 
 LangErrCode strengl( char * );
