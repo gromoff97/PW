@@ -18,7 +18,10 @@ CheckArgErrCode AreArgsValid( int arg_count, char* arg_buffer[] )
 	if ( false == IsArgCountValid( arg_count ) ) { printf( "bad arguments count.Closing\n" ); return CHECK_INVALID_ARG_COUNT; }
 
 	for ( size_t arg_counter = 1; arg_counter < REQARGC; arg_counter++ )
+	{
+		if ( CHECK_LANG_OK != strengl( arg_buffer[arg_counter] ) ) { printf("non-english string was found in following command-line argument: %s\n", arg_buffer[arg_counter] ); return CHECK_NON_ENGL; }
 		if ( false == IsDirExists( arg_buffer[ arg_counter ] ) ) { printf( "Directory \'%s\' does not exist. Closing\n", arg_buffer[arg_counter] ); return CHECK_DIR_NOT_EXISTS; }
+	}
 
 	if ( false == IsDirEmpty( arg_buffer[ 1 ] ) ) { printf( "Watch-Directory \'%s\' is not empty. Closing\n", arg_buffer[ 1 ] ); return CHECK_DIR_NOT_EMPTY; }
 
