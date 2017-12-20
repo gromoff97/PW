@@ -7,4 +7,6 @@ typedef enum {
 	CHECK_LANG_BAD
 } LangErrCode;
 
+LangErrCode strengl( char * );
+
 #endif
