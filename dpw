@@ -9,7 +9,7 @@ then
 	exit 1;
 fi
 
-abs_path=$(readlink -f $rel_path)
+abs_path=$(readlink -f "$rel_path")
 command_content="${command_content} ${abs_path}"
 
 done
