@@ -1,5 +1,5 @@
 CC=gcc
-C_DEPS=src/C/mainfile.c src/C/argcheck.c src/C/watcher.c src/C/langchecker.c
+C_DEPS=src/C/core.c src/C/argcheck.c src/C/watcher.c src/C/langchecker.c
 SH_DEPS=src/SH/defpic.sh
 H_DEPS=include/argchecker.h include/watcher.h include/langchecker.h
 BUILD_DIR=build
